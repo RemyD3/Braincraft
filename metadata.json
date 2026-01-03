@@ -1,0 +1,8 @@
+{
+  "name": "MyBrainCraft",
+  "short_name": "MyBrainCraft",
+  "description": "Professional psychological testing and intelligence hub. Explore your personality, emotional regulation, and cognitive patterns through data.",
+  "requestFramePermissions": [],
+  "theme_color": "#FFD100",
+  "background_color": "#F9F7F2"
+}
