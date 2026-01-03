@@ -1,7 +1,5 @@
 
-import { GoogleGenAI, Type } from "@google/genai";
-
-const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
+import { GoogleGenAI } from "@google/genai";
 
 export async function generateTestInsights(
   testTitle: string, 
@@ -11,6 +9,7 @@ export async function generateTestInsights(
   richAnswers?: Record<string, string | number>
 ) {
   try {
+    const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
     const prompt = `
       Act as a friendly, encouraging mental health coach (similar style to Headspace or Calm). 
       Analyze the user's test results simply and clearly.
@@ -58,6 +57,7 @@ export async function chatWithBusinessCoach(
   chatHistory: { role: string; text: string }[]
 ) {
   try {
+    const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
     const systemPrompt = `
       You are the Chief Wellness Officer AI for "${companyContext.companyName}".
       
@@ -76,11 +76,6 @@ export async function chatWithBusinessCoach(
       5. Do not make up data. If data is missing, say so.
     `;
 
-    // Construct the history for the model
-    // Note: In a real app, we would map to the Content object structure accurately.
-    // For this helper, we'll concatenate for the single-turn generateContent or use a chat session if persisting.
-    // Here we use generateContent with a combined prompt for simplicity in this stateless function.
-    
     let conversation = "";
     chatHistory.forEach(msg => {
       conversation += `${msg.role === 'user' ? 'Admin' : 'AI'}: ${msg.text}\n`;
